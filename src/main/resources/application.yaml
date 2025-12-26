@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: eshopspring
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/eshop
+    username: root
+    password: Yasin2000!!
+  jpa:
+    show-sql: true
+
+
+server:
+  port: 8085
+  servlet:
+    context-path: /eshop
+
+

@@ -1,0 +1,21 @@
+package az.orient.eshopspring.dto.response;
+
+import az.orient.eshopspring.entity.Categories;
+import az.orient.eshopspring.entity.enums.ProductStatus;
+import lombok.Builder;
+import lombok.Data;
+
+import java.util.Date;
+@Data
+@Builder
+public class RespProduct {
+
+    private Integer id;
+    private RespCategories respCategories;
+    private String name;
+    private String description;
+    private double price;
+    private ProductStatus status;
+    private Date createdAt;
+
+}
