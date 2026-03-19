@@ -43,10 +43,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
-    private RespProduct convert(Products product) {
+    public RespProduct convert(Products product) {
         return RespProduct.builder()
                 .id(product.getId())
-                .Categories(CategoriesServiceImpl.convert(product.getCategoryId()))
+                .respCategories(CategoriesServiceImpl.convert(product.getCategoryId()))
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())

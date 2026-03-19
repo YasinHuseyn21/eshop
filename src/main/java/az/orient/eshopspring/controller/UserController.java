@@ -21,6 +21,11 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/test-error")
+    public String testError() {
+        throw new RuntimeException("Sentry works!");
+    }
+
     @GetMapping("/ById/{id}")
     public Response<RespUsers> getUserById(@PathVariable("id") Long id) {
         return userService.getAllUsersByIdAndActive(id);

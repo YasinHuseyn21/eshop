@@ -3,7 +3,7 @@ import lombok.Data;
 
 @Data
 public class ProductImg {
-    private int id;
+    private Integer id;
     private Products product;
     private String imgUrl;
 }

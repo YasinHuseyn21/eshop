@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class RespCategories {
-    private Long id;
+    private Integer id;
     private String name;
 
 }

@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 @Builder
 public class RespUsers {
-    private Long id;
+    private Integer id;
     private String name;
     private String surname;
     private String phone;

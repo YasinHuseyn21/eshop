@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -16,15 +17,16 @@ public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Categories categoryId;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price;
     private String status;
-    @Column(name = "created_at",columnDefinition = "TIMESTA")
+    @Column(name = "created_at",columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date createdAt;
+    @Column(columnDefinition = "INT DEFAULT 1", insertable = false)
     private int active;
 
 

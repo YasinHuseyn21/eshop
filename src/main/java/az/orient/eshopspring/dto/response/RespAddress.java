@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder
 public class RespAddress {
 
-    private Long id;
+    private Integer id;
     private RespUsers respUsers;
     private String addressLine;
     private String city;

@@ -8,6 +8,6 @@ public class  ReqUsers {
     private String surname;
     private String email;
     private String phone;
-    private String password;
+
 
 }

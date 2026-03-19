@@ -9,7 +9,8 @@ spring:
     password: Yasin2000!!
   jpa:
     show-sql: true
-
+    hibernate:
+      ddl-auto: validate
 
 server:
   port: 8085
@@ -17,3 +18,8 @@ server:
     context-path: /eshop
 
 
+sentry:
+  dsn: https://b0f9fc0e87c1f94bc0e486062b2da712@o4511071256379392.ingest.de.sentry.io/4511071287312464
+  # Add data like request headers and IP for users,
+  # see https://docs.sentry.io/platforms/java/guides/spring-boot/data-management/data-collected/ for more info
+  send-default-pii: true

@@ -75,8 +75,8 @@ public class UserServiceImpl implements UserService {
         Response<RespUsers> response = new Response<>();
         try {
             String email = userReq.getEmail();
-            String password = userReq.getPassword();
-            if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+
+            if (email == null || email.isEmpty()) {
                 throw new ShopException(ExceptionConst.INVALID_PARAM, "Invalid Parameter");
             }
             Users users = Users.builder()
@@ -84,7 +84,6 @@ public class UserServiceImpl implements UserService {
                     .name(userReq.getName())
                     .surname(userReq.getSurname())
                     .phone(userReq.getPhone())
-                    .password(userReq.getPassword())
                     .email(userReq.getEmail()).build();
             dataUserRepo.save(users);
             response.setT(fill(users));

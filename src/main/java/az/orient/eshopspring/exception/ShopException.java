@@ -6,11 +6,6 @@ import lombok.NoArgsConstructor;
 public class ShopException extends RuntimeException {
     public Integer code;
 
-    public ShopException(String message) {
-        super(message);
-    }
-
-
     public ShopException(Integer code, String message) {
         super(message);
         this.code = code;

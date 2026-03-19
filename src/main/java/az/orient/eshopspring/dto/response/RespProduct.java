@@ -5,6 +5,7 @@ import az.orient.eshopspring.entity.enums.ProductStatus;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 @Data
 @Builder
@@ -14,7 +15,7 @@ public class RespProduct {
     private RespCategories respCategories;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price;
     private ProductStatus status;
     private Date createdAt;
 
