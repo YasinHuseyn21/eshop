@@ -13,7 +13,7 @@ public interface CartItemsService {
 
     Response<List<RespCartItems>> getAllCartItems();
 
-    Response<RespCartItems> getCartItemsById(Integer id);
+    List<CartItems> getCartItemsById(Integer id);
 
     Response<CartItems> createCartItems(Cart cart, Integer quantity, Products products);
 

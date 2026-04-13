@@ -1,7 +1,6 @@
 package az.orient.eshopspring.dto.response;
 
-import az.orient.eshopspring.entity.CartItems;
-import az.orient.eshopspring.entity.enums.CartStatus;
+import az.orient.eshopspring.enums.CartStatus;
 import lombok.Builder;
 import lombok.Data;
 

@@ -27,8 +27,12 @@ public class CartItemsServiceImpl implements CartItemsService {
     }
 
     @Override
-    public Response<RespCartItems> getCartItemsById(Integer id) {
-        return null;
+    public List<CartItems> getCartItemsById(Integer id) {
+        List<CartItems> items = dataCartItemsRepo.findByCartIdAndActive(id, EnumStatus.ACTIVE.getValue());
+        if (items == null) {
+            throw new ShopException(ExceptionConst.CART_ITEM_NOT_FOUND, "CART_ITEM NOT FOUND");
+        }
+        return items;
     }
 
     @Override
@@ -49,9 +53,7 @@ public class CartItemsServiceImpl implements CartItemsService {
             e.printStackTrace();
             response.setStatus(new ResponseStatus(ExceptionConst.INVALID_REQUEST_DATA, "INTERNAL SERVER ERROR"));
         }
-
-
-        return null;
+        return response;
     }
 
     @Override
@@ -68,7 +70,7 @@ public class CartItemsServiceImpl implements CartItemsService {
         } catch (ShopException ex) {
             ex.printStackTrace();
             response.setStatus(new ResponseStatus(ex.getCode(), ex.getMessage()));
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             response.setStatus(new ResponseStatus(ExceptionConst.INTERNAL_EXCEPTION, "INTERNAL SERVER ERROR"));
         }

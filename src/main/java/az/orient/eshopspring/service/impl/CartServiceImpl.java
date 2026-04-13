@@ -9,7 +9,7 @@ import az.orient.eshopspring.entity.Cart;
 import az.orient.eshopspring.entity.CartItems;
 import az.orient.eshopspring.entity.Products;
 import az.orient.eshopspring.entity.Users;
-import az.orient.eshopspring.entity.enums.CartStatus;
+import az.orient.eshopspring.enums.CartStatus;
 import az.orient.eshopspring.enums.EnumStatus;
 import az.orient.eshopspring.exception.ExceptionConst;
 import az.orient.eshopspring.exception.ShopException;
@@ -51,7 +51,7 @@ public class CartServiceImpl implements CartService {
                 throw new ShopException(ExceptionConst.CART_NOT_FOUND, "Cart not found");
             }
             for (Cart cart : listCart) {
-                List<CartItems> cartItems = dataCartItemsRepo.findByCartIdAndActive(cart.getId(), EnumStatus.ACTIVE.getValue());
+                List<CartItems> cartItems = cartItemsService.getCartItemsById(cart.getId());
                 cart.setCartItems(cartItems);
 
                 BigDecimal totalAmount = cartItems.stream()
@@ -83,9 +83,13 @@ public class CartServiceImpl implements CartService {
             if (cart == null) {
                 throw new ShopException(ExceptionConst.CART_NOT_FOUND, "Cart not found");
             }
+            BigDecimal totalAmount = cartItemsService.getCartItemsById(cart.getId())
+                    .stream()
+                    .map(item -> item.getProduct().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())))
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+            cart.setTotalAmount(totalAmount);
             response.setT(convert(cart));
             response.setStatus(ResponseStatus.success());
-
         } catch (ShopException ex) {
             ex.printStackTrace();
             response.setStatus(new ResponseStatus(ex.getCode(), ex.getMessage()));
@@ -98,7 +102,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Response<RespCart> reqAddToCart(ReqCart reqAddToCart) {
+    public Response<RespCart> addToCart(ReqCart reqAddToCart) {
         Response<RespCart> response = new Response<>();
         try {
             Users user = dataUserRepo.findUsersByIdAndActive(reqAddToCart.userId(), EnumStatus.ACTIVE.getValue());
@@ -123,13 +127,6 @@ public class CartServiceImpl implements CartService {
                 dataCartItemsRepo.save(cartItem);
             } else {
                 cartItemsService.createCartItems(cartNew, reqAddToCart.quantity(), products.get());
-//                cartItem = new CartItems();
-//                cartItem.setCart(cartNew);
-//                cartItem.setProduct(products.get());
-//                cartItem.setQuantity(reqAddToCart.quantity());
-//                cartNew.getCartItems().add(cartItem);
-//                dataCartItemsRepo.save(cartItem);
-
             }
 
             response.setT(convert(cartNew));
@@ -177,11 +174,6 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Response<RespCart> deleteCategoryById(Integer id) {
-        return null;
-    }
-
-    @Override
     public Response<RespCart> removeProductFromCart(ReqCart reqCart) {
         Response<RespCart> response = new Response<>();
         try {
@@ -191,7 +183,8 @@ public class CartServiceImpl implements CartService {
             if (item == null) {
                 throw new ShopException(ExceptionConst.CART_ITEM_NOT_FOUND, "CART ITEM NOT FOUND");
             } else {
-                cartItemsService.delete(item);}
+                cartItemsService.delete(item);
+            }
             response.setStatus(ResponseStatus.success());
         } catch (ShopException ex) {
             ex.printStackTrace();

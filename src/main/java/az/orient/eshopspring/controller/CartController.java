@@ -29,8 +29,7 @@ public class CartController {
 
     @PostMapping("/add")
     public Response<RespCart> addToCart(@RequestBody ReqCart reqAddToCart) {
-        return cartService.reqAddToCart(reqAddToCart);
-    }
+        return cartService.addToCart(reqAddToCart);}
 
     @PostMapping("/remove")
     public Response<RespCart> removeFromCart(@RequestBody ReqCart reqCart) {

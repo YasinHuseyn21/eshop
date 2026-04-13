@@ -1,7 +1,6 @@
 package az.orient.eshopspring.dto.response;
 
-import az.orient.eshopspring.entity.Categories;
-import az.orient.eshopspring.entity.enums.ProductStatus;
+import az.orient.eshopspring.enums.ProductStatus;
 import lombok.Builder;
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package az.orient.eshopspring.entity.enums;
+package az.orient.eshopspring.enums;
 
 public enum CartStatus {
     ACTIVE("ACTIVE"),     // İstifadəçi səbəti istifadə edir, tamamlanmayıb

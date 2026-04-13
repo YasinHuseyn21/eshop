@@ -9,10 +9,9 @@ public class ExceptionConst {
     public static final Integer ADDRESS_NOT_FOUND = 201;
 
 
-
     public static final Integer PRODUCT_NOT_FOUND = 303;
 
-    public static final Integer CATEGORIES_NOT_FOUND =401;
+    public static final Integer CATEGORIES_NOT_FOUND = 401;
     public static final Integer CATEGORY_ALREADY_EXIST = 405;
 
     public static final Integer INVALID_REQUEST_DATA = 502;
@@ -20,5 +19,5 @@ public class ExceptionConst {
     public static final Integer CART_NOT_FOUND = 501;
     public static final Integer CART_ALREADY_EXIST = 505;
 
-public static final Integer CART_ITEM_NOT_FOUND = 601;
+    public static final Integer CART_ITEM_NOT_FOUND = 601;
 }

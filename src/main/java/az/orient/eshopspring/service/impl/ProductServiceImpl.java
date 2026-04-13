@@ -4,7 +4,7 @@ import az.orient.eshopspring.dto.response.RespProduct;
 import az.orient.eshopspring.dto.response.Response;
 import az.orient.eshopspring.dto.response.ResponseStatus;
 import az.orient.eshopspring.entity.Products;
-import az.orient.eshopspring.entity.enums.ProductStatus;
+import az.orient.eshopspring.enums.ProductStatus;
 import az.orient.eshopspring.enums.EnumStatus;
 import az.orient.eshopspring.exception.ExceptionConst;
 import az.orient.eshopspring.exception.ShopException;

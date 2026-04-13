@@ -1,7 +1,7 @@
 package az.orient.eshopspring.entity;
 
-import az.orient.eshopspring.entity.enums.PaymentMethod;
-import az.orient.eshopspring.entity.enums.PaymentStatus;
+import az.orient.eshopspring.enums.PaymentMethod;
+import az.orient.eshopspring.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 

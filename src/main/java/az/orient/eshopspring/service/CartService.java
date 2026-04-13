@@ -14,9 +14,7 @@ public interface CartService {
 
     Response<RespCart> createCart(Long userId);
 
-    Response<RespCart> reqAddToCart(ReqCart reqAddToCart);
-
-    Response<RespCart> deleteCategoryById(Integer id);
+    Response<RespCart> addToCart(ReqCart reqAddToCart);
 
     Response<RespCart> removeProductFromCart(ReqCart reqCart);
 }
